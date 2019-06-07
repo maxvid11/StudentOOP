@@ -31,16 +31,19 @@ void Weather::add_reading(WReading wr){
 
 
 ostream& operator<<(ostream& os, const Weather& w) {
-    os << w.get_name() << ": rating" << w.get_rating() << " " << w.my_loc <<endl;
+    os << w.station_nm << ": rating" << w.rating << " " << w.my_loc <<endl;
+    for (WReading reading: w.wreadings) {
+        cout << reading << endl;
+    }
     return os;
 }
 
 ostream& operator<<(ostream& os, const WReading& wr) {
-    os << "Date: " << wr.date << ", Temperature: " <<wr.temperature << ", Humidity: " << wr.humidity << ", Windspeed: " <<wr.windspeed <<endl;
+    os << "Date: " << wr.date << ", Temperature: " <<wr.temperature << ", Humidity: " << wr.humidity << ", Windspeed: " <<wr.windspeed;
     return os;
 }
 
 ostream& operator<<(ostream& os, const Date& date) {
-    os << "Date: " << date.month << "/" << date.day << "/" << date.year << endl;
+    os << date.month << "/" << date.day << "/" << date.year;
     return os;
 }
