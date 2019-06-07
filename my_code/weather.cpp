@@ -25,7 +25,22 @@ void Weather::set_rating(int new_rating) {
     rating = new_rating;
 }
 
+void Weather::add_reading(WReading wr){
+    wreadings.push_back(wr);
+}
+
+
 ostream& operator<<(ostream& os, const Weather& w) {
     os << w.get_name() << ": rating" << w.get_rating() << " " << w.my_loc <<endl;
+    return os;
+}
+
+ostream& operator<<(ostream& os, const WReading& wr) {
+    os << "Date: " << wr.date << ", Temperature: " <<wr.temperature << ", Humidity: " << wr.humidity << ", Windspeed: " <<wr.windspeed <<endl;
+    return os;
+}
+
+ostream& operator<<(ostream& os, const Date& date) {
+    os << "Date: " << date.month << "/" << date.day << "/" << date.year << endl;
     return os;
 }
