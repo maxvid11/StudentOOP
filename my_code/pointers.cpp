@@ -45,16 +45,17 @@ Thing** create_array_of_things(int n) {
  * Print all of the things created in the function above.
  * */
 void print_all_things(Thing** things, int n) {
-    for(int i=0; i < n; i++){
-        cout << things[i]->val << endl;
+    for (int i = 0; i < n; i++) {
+        cout << things[i]->val << ' ';
     }
+    cout << endl;
 }
 
 /*
  * Double the value of each thing (use *=).
  * */
 void double_all_things(Thing** things, int n) {
-    for(int i=0; i< n; i++){
+    for(int i = 0; i < n; i++){
         things[i]->val *= 2;
     }
 }
@@ -64,9 +65,10 @@ void double_all_things(Thing** things, int n) {
  * Delete all of the things, and the Thing array, that you have created.
  * */
 void delete_all_things(Thing** things, int n) {
-    for(int i=0; i<0; i++){
+    for (int i = 0; i < n; i++) {
         delete things[i];
     }
+    delete [] things;
 }
 
 
@@ -82,9 +84,13 @@ void assignTA(Student* s, Student* ta) {
  * Print who has which TA.
  * */
 void printTAs(vector<Student*>& students) {
-    for(Student* kid: students){
-        if(kid->ta != nullptr){
-            cout << kid->ta->name << endl;
+    for (Student* s: students) {
+        if (s->ta == nullptr) {
+            cout << s->name << " has no TA." << endl;
+        }
+        else {
+            cout << s->name << " has TA " << s->ta->name << '.' << endl;
         }
     }
+    cout << endl;
 }
