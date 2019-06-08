@@ -9,7 +9,7 @@ void inc_by_value(int n) {
 
 
 void inc_with_pointer(int* iptr) {
-    ++(*iptr);
+    ++*iptr;
 }
 
 
@@ -19,31 +19,29 @@ void inc_with_reference(int& n) {
 
 
 Thing** create_array_of_things(int n) {
-    Thing** array = new Thing*[n];
-    for (int i = 0; i < n; i++) {
-        array[i] = new Thing(i);
+    Thing** ptr = new Thing*[n];
+    for(int i = 0; i < n; ++i){
+        ptr[i] = new Thing(i);
     }
-    return array;
+    return ptr;
 }
 
 void print_all_things(Thing** things, int n) {
-    for (int i = 0; i < n; i++) {
-        cout << things[i]->val << ' ';
+    for( int i = 0; i < n; ++i){
+        cout<< things[i]->val <<endl;
     }
-    cout << endl;
 }
 
 void double_all_things(Thing** things, int n) {
-    for (int i = 0; i < n; i++) {
-        things[i]->val *= 2;
+    for(int i = 0; i < n; ++i){
+        things[i] -> val *= 2;
     }
 }
 
 void delete_all_things(Thing** things, int n) {
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i){
         delete things[i];
     }
-    delete [] things;
 }
 
 
@@ -52,13 +50,10 @@ void assignTA(Student* s, Student* ta) {
 }
 
 void printTAs(vector<Student*>& students) {
-    for (Student* s: students) {
-        if (s->ta == nullptr) {
-            cout << s->name << " has no TA." << endl;
+    for(Student* s : students){
+        if (s->ta != nullptr){
+            cout << (s->ta) -> name << endl;
         }
-        else {
-            cout << s->name << " has TA " << s->ta->name << '.' << endl;
-        }
+        else cout << "No TA for this student" <<endl;
     }
-    cout << endl;
 }
