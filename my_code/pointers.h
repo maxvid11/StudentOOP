@@ -14,8 +14,6 @@ struct Thing {
     Thing(int i) : val(i) {}
 };
 
-
-
 Thing** create_array_of_things(int n);
 void print_all_things(Thing** things, int n);
 void double_all_things(Thing** things, int n);
