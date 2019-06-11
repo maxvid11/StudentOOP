@@ -7,12 +7,9 @@ using namespace std;
 
 void get_wreadings(string filenm, Weather& w) {
     ifstream rfile(filenm);
-    while (!rfile)
-    {
+    while (!rfile){
         cout << "Could not read input file " << filenm <<" \n Try a new name: " << endl;
-        
         cin >> filenm;
-        
         if (filenm=="exit")
         {exit(2);}
         rfile.open(filenm);
