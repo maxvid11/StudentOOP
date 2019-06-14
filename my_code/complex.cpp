@@ -87,8 +87,6 @@ Complex Complex::operator-=(const Complex& c){
     return (*this);
 }
 
-
-
 double Complex::get_real() const {
     return real;
 }
