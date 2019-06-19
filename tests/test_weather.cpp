@@ -9,10 +9,10 @@ using namespace std;
 void get_wreadings(string filenm, Weather& w) {
     Image* base = new Image(100, 100, "base.img");
     Gif* gif = new Gif(100, 100, "file.gif");
-    Jpeg* jpeg = new Jpeg(100, 100, "file.jpg", LOW);
+    Jpeg* jpeg = new Jpeg(100, 100, "file.jpg");
     Png* png = new Png(100, 100, "file.png");
     
-    vector<Image*> im = {base, gif, jpeg, png, nullptr};
+    vector<Image*> images = {base, gif, jpeg, png, nullptr};
     
     ifstream rfile(filenm);
     if (!rfile) {
