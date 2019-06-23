@@ -18,17 +18,14 @@ struct Node {
  * The various functions that can operate on our linked lists:
  * */
 std::ostream& operator<<(std::ostream& os, const Node* nd);
-void print_list(std::ostream& os, const Node* head);
+void print_list(std::ostream& os, const Node* curr);
 Node* last(Node* head);
-void add_at_end(Node* head, int d);
+void add_at_end(Node*& head, int d);
 void add_at_front(Node*& head, int d);
-
-/*
- * These are coming:
- bool del_head(Node*& head);
- bool del_tail(Node** prev_next);
- Node* duplicate(Node* head);
- Node* reverse(Node* curr, Node* prev=nullptr);
- */
+bool del_head(Node*& head);
+bool del_tail(Node*& head);
+Node* duplicate(Node* head);
+Node* reverse(Node* curr, Node* new_next=nullptr);
+Node* join(Node*& head, Node* reverse);
 
 #endif
