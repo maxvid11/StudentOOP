@@ -1,11 +1,5 @@
 //what does vector add to C arrays
 
-
-
-
-
-
-
 //what is the name of a C array
 
 //a  pointer to the data type thats held by the array
@@ -34,11 +28,15 @@ MyVec::MyVec(int sz, int val) : sz{sz} {
 
 
 MyVec::MyVec(const MyVec& v2) {
+    
     copy(v2);
+    
 }
 
 MyVec::~MyVec() {
+    
     delete [] data;
+    
 }
 
 MyVec& MyVec::operator=(const MyVec& v2) {
@@ -51,11 +49,11 @@ MyVec& MyVec::operator=(const MyVec& v2) {
 
 
 MyVec::Iterator MyVec::begin() const {
-    return MyVec::Iterator(nullptr);
+    return MyVec::Iterator(data);
 }
 
 MyVec::Iterator MyVec::end() const {
-    return MyVec::Iterator(nullptr);
+    return MyVec::Iterator(data + sz);
 }
 
 
@@ -63,6 +61,7 @@ MyVec::Iterator MyVec::end() const {
  * == is true when every element of the vectors are the same in
  * the same order. (Thus they must be the same size.)
  * */
+
 bool operator==(MyVec& v1, MyVec& v2) {
     if ((v1.size() != v2.size())) {
         cout << "SIZE NOT EQUAL";

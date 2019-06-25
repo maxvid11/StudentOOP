@@ -12,18 +12,24 @@ public:
          * operator*
          * operator!=
          * */
+        
         friend bool operator!=(Iterator& rhs, Iterator& lhs) {
-            return true;
+            return (rhs.iptr != lhs.iptr);
         }
         
     public:
         Iterator(int* ip) : iptr(ip) {}
         
         Iterator& operator++() {
+            iptr++;
             return *this;
         }
         
-        int operator*() { return 0; }
+        int operator*() {
+            iptr
+            
+            return 0;
+        }
         
     private:
         int* iptr;
@@ -50,7 +56,6 @@ private:
     int sz;
     int capacity;
 };
-
 
 void print_vector(const MyVec& v);
 
