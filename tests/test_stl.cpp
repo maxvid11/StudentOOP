@@ -54,7 +54,7 @@ void print_list(string name, list<T> lst) {
 template<typename T>
 
 void print(string name, const T cont) {
-    cout << "name: " << name;
+    cout << "" << name;
     for(auto i: cont) {
         cout << i << " ";
     }
@@ -206,12 +206,12 @@ int main() {
 
 //this is a functor....
     
-class IsOdd {
-    public:
-        bool operator()(int n) {
-            times_called++;
-            return (n % 2) == 1;
-    }
-    private:
-        static int times_called;
-};;
+//class IsOdd {
+//    public:
+//        bool operator()(int n) {
+//            times_called++;
+//            return (n % 2) == 1;
+//    }
+//    private:
+//        static int times_called;
+//};;
