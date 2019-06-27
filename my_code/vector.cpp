@@ -5,6 +5,12 @@
 //a  pointer to the data type thats held by the array
 //calls the address of the begining of the array
 
+// Know who stepinov is
+
+//know what templates are used for in C++
+
+
+
 
 #include <iostream>
 #include "vector.h"
