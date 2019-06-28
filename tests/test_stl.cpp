@@ -21,8 +21,8 @@ using namespace std;
 
 template<typename T>
 void print_vec(string name, vector<T> vec) {
-    cout << "name: " << name;
-    for(T i: vec) {
+    cout << "name: " << name << " ";
+    for(const T& i: vec) {
         cout << i << " ";
     }
     cout << endl;
@@ -40,8 +40,8 @@ void print_vec(string name, vector<T> vec) {
 template<typename T>
 
 void print_list(string name, list<T> lst) {
-    cout << "name: " << name;
-    for(T i: lst) {
+    cout << "name: " << name << " ";
+    for(const T& i: lst) {
         cout << i << " ";
     }
     cout << endl;
@@ -54,8 +54,8 @@ void print_list(string name, list<T> lst) {
 template<typename T>
 
 void print(string name, const T cont) {
-    cout << "" << name;
-    for(auto i: cont) {
+    cout << name << " ";
+    for(const auto& i: cont) {
         cout << i << " ";
     }
     cout << endl;
