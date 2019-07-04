@@ -41,7 +41,7 @@ test_functors: $(TEST_DIR)/test_functors
 $(TEST_DIR)/test_functors: $(TEST_DIR)/test_functors.cpp
 
 
-tests: test_hello test_basics test_pointers test_complex test_llist test_functors
+tests: test_hello test_basics test_pointers test_complex test_tvector test_llist test_functors
 		tests/test_hello
 		tests/test_basics
 		tests/test_pointers
