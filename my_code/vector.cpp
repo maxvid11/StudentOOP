@@ -9,7 +9,13 @@
 
 //know what templates are used for in C++
 
+//recursion!!!
 
+// why is (0 == c4) True?? ----- complex class
+
+// Lambdas
+
+//key word to block implicet type conversion you dont want??
 
 
 #include <iostream>

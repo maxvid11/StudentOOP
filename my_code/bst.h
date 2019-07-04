@@ -36,11 +36,76 @@ public:
     Bst(T d, Bst* p=nullptr, Bst* l=nullptr, Bst* r=nullptr)
     : data(d), parent(p), left(l), right(r) {}
     
+    Bst<T>* search(T value){
+        if(value < data){
+            if(left == nullptr) return nullptr;
+            else return left->search(value);
+        }
+        else if (value > data){
+            if(right == nullptr) return nullptr;
+            else return right->search(value);
+        }
+        else return this;
+    }
+    
     Bst<T>* insert(const T d) {
+        if(d < this->data){
+            if(this->left == nullptr) this->left = new Bst<T>(d, this);
+            else this->left->insert(d);
+        } else if (d > this->data) {
+            if(this->right == nullptr) this->right = new Bst<T>(d, this);
+            else this->right->insert(d);
+        }
+        return this;
+    }
+    
+    T& min(){
+        if (this->left == nullptr){
+            return this->data;
+        }
+        return this->left->min();
+    }
+    
+    T& max(){
+        if (this->right == nullptr){
+            return this->data;
+        }
+        return this->right->max();
     }
     
     T get_val() const {
         return data;
+    }
+    
+    Bst<T>* predecessor(T d) {
+        Bst<T>* curr = search(d);
+        if (curr->left) {
+            curr = curr->left;
+            while (curr->right != nullptr) curr = curr->right;
+            return curr;
+        }
+        else if (curr->parent) {
+            while ((curr->parent)->data > curr->data) {
+                curr = curr->parent;
+            }
+            return curr->parent;
+        }
+        else return nullptr;
+    }
+    
+    
+    Bst<T>* successor(T d){
+        Bst<T>* curr = search(d);
+        if(curr->right) {
+            curr = curr->right;
+            while (curr->left != nullptr) curr = curr->left;
+            return curr;
+        }
+        while (curr->parent != nullptr) {
+            if(curr->parent->data > d) break;
+            curr = curr->parent;
+        }
+        return curr->parent;
     }
     
 private:
@@ -49,3 +114,4 @@ private:
     Bst* left;
     Bst* right;
 };
+

@@ -17,6 +17,7 @@ public:
     }
     
 
+    
     MyVec(int sz, DATA val=0):sz(sz){
         data = new DATA[max(DEF_CAPACITY, 2 * sz)];
         capacity = max(DEF_CAPACITY, 2 * sz);

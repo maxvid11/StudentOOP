@@ -1,6 +1,3 @@
-#ifndef LINKED_H
-#define LINKED_H
-
 #include <iostream>
 
 
@@ -27,5 +24,3 @@ bool del_tail(Node*& head);
 Node* duplicate(Node* head);
 Node* reverse(Node* curr, Node* new_next=nullptr);
 Node* join(Node*& head, Node* reverse);
-
-#endif

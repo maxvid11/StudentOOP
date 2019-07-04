@@ -4,59 +4,43 @@
 using namespace std;
 
 
-
 ostream& operator<<(ostream& os, const Node* nd) {
-    os << nd->data;
+    os << nd->data << "\t";
     return os;
 }
 
 
-
 void add_at_end(Node*& head, int d) {
-    if(head->next != nullptr){
-        add_at_end(head->next, d);
-        return;
+    if (!head->next){
+        head->next = new Node(d);
     }
-    head->next = new Node(d);
+    else{
+        add_at_end(head->next, d);
+    }
 }
 
 
 
-void print_list(ostream& os, const Node* curr) {
-    if(curr == nullptr){
+void print_list(ostream& os, const Node* head) {
+    if(head == nullptr){
         os << "The List is Empty" << endl;;
         return;
     }
-    os << curr->data;
-    if(curr->next != nullptr){
+    os << head->data;
+    if(head->next != nullptr){
         os << " -> ";
-        print_list(os, curr->next);
+        print_list(os, head->next);
     }
     os << endl;
 }
 
 
+
 void add_at_front(Node*& head, int d) {
-    Node* new_head = new Node(d);
-    new_head->next = head;
-    head = new_head;
+    head = new Node(d, head);
 }
 
-bool del_tail(Node*& head) {
-    if(!head){
-        return false;
-    }
-    else{
-        if(head->next == nullptr){
-            delete head;
-            head = nullptr;
-            return true;
-        }
-        else{
-            return del_tail(head->next);
-        }
-    }
-}
+
 
 bool del_head(Node*& head) {
     if(!head){
@@ -72,6 +56,24 @@ bool del_head(Node*& head) {
 
 
 
+bool del_tail(Node*& curr) {
+    if(!curr){
+        return false;
+    }
+    else{
+        if(curr->next == nullptr){
+            delete curr;
+            curr = nullptr;
+            return true;
+        }
+        else{
+            return del_tail(curr->next);
+        }
+    }
+}
+
+
+
 Node* reverse(Node* curr, Node* new_next){
     if(!curr){
         return new_next;
@@ -81,31 +83,30 @@ Node* reverse(Node* curr, Node* new_next){
     }
 }
 
+
 Node* duplicate(Node* head){
-    if(!head){
-        return nullptr;
+    if (!head){
+        return head;
     }
-    else{
-        if(head->next == nullptr){
-            Node* end_copy = new Node(head->data);
-            return end_copy;
-        }
-        Node* copy_head = new Node(head->data);
-        copy_head->next = duplicate(head->next);
-        return copy_head;
+    else {
+        Node* new_head = new Node(head->data, duplicate(head->next));
+        return new_head;
     }
 }
 
-Node* join(Node*& head, Node* reverse){
-    Node* last_of_head = last(head);
-    last_of_head->next = reverse;
-    return head;
+
+Node* join(Node*& list1, Node* list2) {
+    Node* lastNode = last(list1);
+    lastNode -> next = list2;
+    return list1;
 }
 
 
 Node* last(Node* head) {
-    if(head->next == nullptr){
+    if (!head->next){
         return head;
     }
-    return last(head->next);
+    else{
+        return last(head->next);
+    }
 }
